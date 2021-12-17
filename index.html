@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="Sergey Pozhilov (GetTemplate.com)">
+
+	<title>Outil d'optimisation contraste</title>
+
+	<link rel="shortcut icon" href="assets/images/hackathon_logo.png">
+
+	<!-- Bootstrap itself -->
+	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<!-- Icons -->
+	<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+	<!-- Fonts -->
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+	<!-- Custom styles -->
+	<link rel="stylesheet" href="assets/css/styles.css">
+
+	<!--[if lt IE 9]> <script src="assets/js/html5shiv.js"></script> <![endif]-->
+</head>
+
+<body>
+
+	<!-- Header -->
+	<header class="header">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 col-lg-push-2 text-center">
+					<h1>Outil d'optimisation contraste</h1>
+					<h2>by 99%</h2>
+					<p class="lead">
+						Notre outil vous permet de connaitre le pourcentage de l'accessiblité de votre page web.
+					</p>
+					<p>Pour cela il vous suffit de rentrer son url dans la cadre ci-dessous.<br>
+					</p>
+					<br>
+					<form class="form-inline" role="form">
+						<div class="form-group"><input type="text" class="form-control input-lg" id="inputurl"
+								placeholder="Saisissez votre URL"></div>
+						<button type="submit" class="btn btn-lg btn-default" id="btn">Valider</button>
+				</form>
+				<p id=" test"></p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12">
+				</div>
+			</div>
+		</div>
+	</header>
+	<!-- /Header -->
+
+	<!-- Content -->
+	<main class="content">
+
+		<!-- Lead -->
+		<section class="container space-before space-after">
+			<div class="row">
+				<div class="col-sm-10 col-sm-push-1">
+					<h1 class="text-center">A propos du contraste</h1>
+					<p class="lead text-center">
+					</p>
+				</div>
+			</div>
+		</section>
+		<!-- /Lead -->
+
+
+
+		<!-- Features -->
+		<section class="container space-before">
+
+			<div class="row featurelist space-after">
+				<div class="col-md-5 col-sm-6 col-md-push-1 ">
+					<img class="img-feature img-responsive" src="assets/images/screen1.png" alt="Sample image">
+				</div>
+				<div class="col-md-5 col-md-push-1 col-sm-6">
+					<h2 class="space-before">Le contraste entre l'arrière plan et la couleur du texte doit avoir un
+						ratio assez haut.</h2>
+					<p>Dans cet exemple le ratio du contraste entre la couleur du texte et son fond est trop bas, il est
+						égale à 1,28.</p>
+				</div>
+			</div>
+
+			<div class="row featurelist space-after">
+				<div class="col-md-5 col-sm-6 col-sm-push-6">
+					<img class="img-feature img-responsive" src="assets/images/screen2.png" alt="Sample image">
+				</div>
+				<div class="col-md-5 col-sm-6 col-md-pull-4 col-sm-pull-6">
+					<h2 class="space-before">Ce ratio garantit la lisibilité d'une page surtout pour les personnes
+						atteint de daltonisme.</h2>
+					<p>Ici le texte se détache assez de la couleur de fond il est donc bien visible, le ratio est égale
+						à 7,43. </p>
+				</div>
+			</div>
+		</section>
+		<!-- /Features -->
+
+	</main>
+
+
+	<footer id="footer" class="jumbotron">
+		<section class="container">
+			<div class="row">
+				<div class="col-md-5 col-md-push-1">
+					<h2>Besoin d'aide ?</h2>
+					<p>Si vous rencontrez un problème ou un bug, vous pouvez nous poster une issue sur <a
+							href="https://github.com/MassiRamdani/">GitHub</a> </p>
+				</div>
+			</div>
+		</section>
+	</footer>
+
+	<p class="small text-muted text-center">Copyright &copy; 2014, 99%. Design by: <a href="http://gettemplate.com/"
+			rel="designer" title="Free Bootstrap templates">GetTemplate</a></p>
+	<br>
+
+
+
+	<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="assets/js/template.js"></script>
+	<script src="assets/js/test.js"></script>
+	<script type="text/javascript">
+			$("#btn").click(function (event) {
+				event.preventDefault();
+				var urlvalue = $('#inputurl').val();
+				var apiurl = "https://good-barber.herokuapp.com/api/v1/calcul/url/";
+				console.log(apiurl + urlvalue);
+				fetch(apiurl + urlvalue).then(response => {
+					console.log(response);
+					return response.json();
+				}).then(data => {
+					// Work with JSON data here
+					console.log(data);
+				}).catch(err => {
+					console.log(err);
+				});
+			});
+	</script>
+</body>
+
+</html>
